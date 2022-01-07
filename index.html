@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E6%83%85%E5%A0%B1-1-%E7%9B%AE%E6%AC%A1">情報 1 目次</h1>
+<details><summary>1 章 【Mac編】コンピュータの使い方</summary>
+<ul>
+<li>NGIQNP01_M001	【Mac編】マウスやトラックパッドを操作しよう</li>
+<li>NGIQNP01_M002	【Mac編】電源のオン・オフと Mac のスペック確認</li>
+<li>NGIQNP01_M003	【Mac編】音量と画面の明るさの調整</li>
+<li>NGIQNP01_M004	【Mac編】アプリを起動してみよう</li>
+<li>NGIQNP01_M005	【Mac編】Mac の画面について知ろう</li>
+<li>NGIQNP01_M006	【Mac編】キーボードで入力しよう（基本編）</li>
+<li>NGIQNP01_M007	【Mac編】キーボードで入力しよう（実践編）</li>
+<li>NGIQNP01_M008	【Mac編】ローマ字</li>
+<li>NGIQNP01_M009	【Mac編】覚えておくと便利なショートカットキー</li>
+<li>NGIQNP01_M010	【Mac編】ファイル・フォルダ操作に慣れよう（基本編）</li>
+<li>NGIQNP01_M011	【Mac編】ファイル・フォルダ操作に慣れよう（実践編）</li>
+<li>NGIQNP01_M012	【Mac編】コマンドラインの基本</li>
+<li>NGIQNP01_M013	【Mac編】圧縮ファイルを扱ってみよう</li>
+<li>NGIQNP01_M014	【Mac編】スクリーンショットを撮ってみよう</li>
+<li>NGIQNP01_M015	【Mac編】コピー・アンド・ペーストをしよう</li>
+<li>NGIQNP01_M016	【Mac編】Wi-Fi に接続しよう</li>
+<li>NGIQNP01_M017	【Mac編】アプリのインストール・アンインストール</li>
+<li>NGIQNP01_M018	【Mac編】Google Chrome をインストールしよう</li>
+<li>NGIQNP01_M019	【Mac編】Google Chrome を使ってみよう</li>
+<li>NGIQNP01_M020	【Mac編】ファイルをダウンロード・アップロードしよう</li>
+<li>NGIQNP01_M021	【Mac編】パソコンに接続できる機器について学ぼう</li>
+<li>NGIQNP01_M022	【Mac編】ファイルをバックアップしよう</li>
+</ul>
+</details>
+<details><summary>2 章 【Win編】コンピュータの使い方</summary>
+<ul>
+<li>NGIQNP02_M001	【Win編】マウスやトラックパッドを操作しよう</li>
+<li>NGIQNP02_M002	【Win編】電源のオン・オフと Mac のスペック確認</li>
+<li>NGIQNP02_M003	【Win編】音量と画面の明るさの調整</li>
+<li>NGIQNP02_M004	【Win編】アプリを起動してみよう</li>
+<li>NGIQNP02_M005	【Win編】Windows の画面について知ろう</li>
+<li>NGIQNP02_M006	【Win編】キーボードで入力しよう（基本編）</li>
+<li>NGIQNP02_M007	【Win編】キーボードで入力しよう（実践編）</li>
+<li>NGIQNP02_M008	【Win編】ローマ字</li>
+<li>NGIQNP02_M009	【Win編】覚えておくと便利なショートカットキー</li>
+<li>NGIQNP02_M010	【Win編】ファイル・フォルダ操作に慣れよう（基本編）</li>
+<li>NGIQNP02_M011	【Win編】ファイル・フォルダ操作に慣れよう（実践編）</li>
+<li>NGIQNP02_M012	【Win編】コマンドラインの基本</li>
+<li>NGIQNP02_M013	【Win編】圧縮ファイルを扱ってみよう</li>
+<li>NGIQNP02_M014	【Win編】スクリーンショットを撮ってみよう</li>
+<li>NGIQNP02_M015	【Win編】コピー・アンド・ペーストをしよう</li>
+<li>NGIQNP02_M016	【Win編】Wi-Fi に接続しよう</li>
+<li>NGIQNP02_M017	【Win編】アプリのインストール・アンインストール</li>
+<li>NGIQNP02_M018	【Win編】Google Chrome をインストールしよう</li>
+<li>NGIQNP02_M019	【Win編】Google Chrome を使ってみよう</li>
+<li>NGIQNP02_M020	【Win編】ファイルをダウンロード・アップロードしよう</li>
+<li>NGIQNP02_M021	【Win編】パソコンに接続できる機器について学ぼう</li>
+<li>NGIQNP02_M022	【Win編】ファイルをバックアップしよう</li>
+</ul>
+</details>
+<details><summary>3 章 情報で問題を解決する</summary>
+<ul>
+<li>NGIQNP03_M001	情報とメディアの特性</li>
+<li>NGIQNP03_M002	問題解決の流れ</li>
+<li>NGIQNP03_M003	検索のコツ</li>
+<li>NGIQNP03_M004	キーワード検索のテクニック</li>
+<li>NGIQNP03_M005	発想法</li>
+<li>NGIQNP03_M006	問題解決のツール</li>
+<li>NGIQNP03_M007	アイディアの大量生産</li>
+<li>NGIQNP03_M008	【Mac編】オンライン会議サービスを使ってみよう</li>
+<li>NGIQNP03_M009	【Win編】オンライン会議サービスを使ってみよう</li>
+<li>NGIQNP03_M010	Google アカウントを取得しよう</li>
+<li>NGIQNP03_M011	Google スライドでプレゼンを作ろう</li>
+<li>NGIQNP03_M012	プレゼンテーション</li>
+<li>NGIQNP03_M013	職業人インタビュー</li>
+<li>NGIQNP03_M014	情報モラル</li>
+<li>NGIQNP03_M015	個人情報の流出</li>
+<li>NGIQNP03_M016	傷つかない傷つけないために</li>
+<li>NGIQNP03_M017	著作権</li>
+<li>NGIQNP03_M018	産業財産権</li>
+<li>NGIQNP03_M019	著作権の例外規定</li>
+<li>NGIQNP03_M020	クリエイティブ・コモンズ</li>
+<li>NGIQNP03_M021	情報技術の発展</li>
+<li>NGIQNP03_M022	情報化と私たちの生活の変化</li>
+<li>NGIQNP03_M023	ディープラーニング</li>
+<li>NGIQNP03_M024	よりよい情報社会へ</li>
+<li>NGIQNP03_M025	インターネットと選挙</li>
+<li>NGIQNP03_M026	IoTでつながる世界</li>
+<li>NGIQNP03_M027	作ろう！マイルール</li>
+<li>NGIQNP03_M028	言葉で図形を伝達</li>
+</ul>
+</details>
+<details><summary>4 章 情報を伝える</summary>
+<ul>
+<li>NGIQNP04_M001	コミュニケーション手段の変化</li>
+<li>NGIQNP04_M002	アラブの春</li>
+<li>NGIQNP04_M003	クラウドファンディング</li>
+<li>NGIQNP04_M004	ネットコミュニケーションの特徴</li>
+<li>NGIQNP04_M005	集団による情報の創造</li>
+<li>NGIQNP04_M006	デジタルの世界へ</li>
+<li>NGIQNP04_M007	数値と文字のデジタル表現</li>
+<li>NGIQNP04_M008	文字の基礎知識</li>
+<li>NGIQNP04_M009	２進法の計算</li>
+<li>NGIQNP04_M010	QRコード</li>
+<li>NGIQNP04_M011	データ量の計算</li>
+<li>NGIQNP04_M012	データ量の見積もり</li>
+<li>NGIQNP04_M013	文字コードは世界をつなぐ</li>
+<li>NGIQNP04_M014	音と画像のデジタル表現</li>
+<li>NGIQNP04_M015	色と動画のデジタル表現</li>
+<li>NGIQNP04_M016	色彩の基礎知識</li>
+<li>NGIQNP04_M017	光の三原色体験</li>
+<li>NGIQNP04_M018	目的に応じたデジタル化</li>
+<li>NGIQNP04_M019	情報デザイン</li>
+<li>NGIQNP04_M020	Google ドキュメントで文書を作成しよう</li>
+<li>NGIQNP04_M021	色の識別性</li>
+<li>NGIQNP04_M022	ピクトグラム</li>
+<li>NGIQNP04_M023	文字の読みやすさ</li>
+<li>NGIQNP04_M024	図解表現</li>
+<li>NGIQNP04_M025	Webページの構造</li>
+<li>NGIQNP04_M026	Webニュースページ</li>
+<li>NGIQNP04_M027	ユニバーサルデザイン</li>
+<li>NGIQNP04_M028	情報デザインの流れ</li>
+<li>NGIQNP04_M029	ペルソナ手法</li>
+<li>NGIQNP04_M030	撮影するときの注意点</li>
+<li>NGIQNP04_M031	映像制作</li>
+</ul>
+</details>
+<details><summary>5 章 コンピュータを活用する</summary>
+<ul>
+<li>NGIQNP05_M001	コンピュータとは何か</li>
+<li>NGIQNP05_M002	チューリングテスト</li>
+<li>NGIQNP05_M003	完全自動運転を目指して</li>
+<li>NGIQNP05_M004	ソフトウェアの仕組み</li>
+<li>NGIQNP05_M005	そもそも「パソコン」って？</li>
+<li>NGIQNP05_M006	パソコンの種類を知ろう</li>
+<li>NGIQNP05_M007	CPUとメモリ</li>
+<li>NGIQNP05_M008	CPUの処理能力</li>
+<li>NGIQNP05_M009	パソコンの中身を見てみよう</li>
+<li>NGIQNP05_M010	OS ってなんだろう？</li>
+<li>NGIQNP05_M011	Windows と macOS を知ろう</li>
+<li>NGIQNP05_M012	演算の仕組みとコンピュータの限界</li>
+<li>NGIQNP05_M013	アルゴリズムの表現</li>
+<li>NGIQNP05_M014	【Mac編】VScode をインストールして使ってみよう</li>
+<li>NGIQNP05_M015	【Win編】VScode をインストールして使ってみよう</li>
+<li>NGIQNP05_M016	Python</li>
+<li>NGIQNP05_M017	JavaScript</li>
+<li>NGIQNP05_M018	表計算マクロ【GAS＆スプレッドシート】</li>
+<li>NGIQNP05_M019	Swift</li>
+<li>NGIQNP05_M020	ドリトル</li>
+<li>NGIQNP05_M021	Scratch</li>
+<li>NGIQNP05_M022	プログラムの基本構造１</li>
+<li>NGIQNP05_M023	プログラムの基本構造２</li>
+<li>NGIQNP05_M024	発展的なプログラム１</li>
+<li>NGIQNP05_M025	発展的なプログラム２</li>
+<li>NGIQNP05_M026	気まぐれAI</li>
+<li>NGIQNP05_M027	マイコンボード</li>
+<li>NGIQNP05_M028	お知らせセンサ</li>
+<li>NGIQNP05_M029	プログラムで動きを再現</li>
+<li>NGIQNP05_M030	Myお天気キャスター</li>
+<li>NGIQNP05_M031	Google スプレッドシートで表計算をしよう</li>
+<li>NGIQNP05_M032	モデル化とシミュレーション</li>
+<li>NGIQNP05_M033	シミュレーションの活用</li>
+<li>NGIQNP05_M034	シミュレーション</li>
+</ul>
+</details>
+<details><summary>6 章 データを活用する</summary>
+<ul>
+<li>NGIQNP06_M001	ネットワークとインターネット</li>
+<li>NGIQNP06_M002	インターネットの仕組み</li>
+<li>NGIQNP06_M003	IPアドレスの種類</li>
+<li>NGIQNP06_M004	パケット通信の体験</li>
+<li>NGIQNP06_M005	サーバとクライアント</li>
+<li>NGIQNP06_M006	ルートDNSサーバ</li>
+<li>NGIQNP06_M007	インターネット上のサービス</li>
+<li>NGIQNP06_M008	Gmail を使ってみよう</li>
+<li>NGIQNP06_M009	Google ドライブを使ってデータを保存・共有しよう</li>
+<li>NGIQNP06_M010	情報セキュリティ</li>
+<li>NGIQNP06_M011	生体認証</li>
+<li>NGIQNP06_M012	情報セキュリティポリシー</li>
+<li>NGIQNP06_M013	フェイルセーフとフールプルーフ</li>
+<li>NGIQNP06_M014	セキュリティについて知ろう</li>
+<li>NGIQNP06_M015	不審な URL を見分けよう</li>
+<li>NGIQNP06_M016	マルウェアから身を守ろう</li>
+<li>NGIQNP06_M017	データの形式</li>
+<li>NGIQNP06_M018	ファイル形式の種類と特徴</li>
+<li>NGIQNP06_M019	データベースの活用</li>
+<li>NGIQNP06_M020	予約システム</li>
+<li>NGIQNP06_M021	さまざまなデータモデル</li>
+<li>NGIQNP06_M022	データ分析の流れ</li>
+<li>NGIQNP06_M023	データの分析</li>
+<li>NGIQNP06_M024	目的に合わせたデータの利用</li>
+<li>NGIQNP06_M025	コンビニデータベース</li>
+<li>NGIQNP06_M026	Google フォームでアンケートを作ろう</li>
+<li>NGIQNP06_M027	クラスの実態調査</li>
+</ul>
+</details>
+</body>
+</html>
